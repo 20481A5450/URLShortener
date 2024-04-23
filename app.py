@@ -16,7 +16,6 @@ class URL(db.Model):
     short_url = db.Column(db.String(50), nullable=False)
 
 
-
 @app.route('/')
 def index():
     return render_template('landing_page.html')
