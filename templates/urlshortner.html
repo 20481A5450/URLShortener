@@ -1,12 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>URLShortner</title>
+    <title>URLShortener</title>
 </head>
 <body>
-    <h1>URLShortner</h1>
-    <p>Welcome to the URLShortner application.</p>
-    <input type="text" name="url" placeholder="Enter URL">
-    <input type="submit" value="Submit">
+    <h1>URLShortener</h1>
+    <p>Welcome to the URLShortener application.</p>
+    <form action="{{ url_for('url_shortner') }}" method="post">
+        <label>Enter Short Name</label>
+        <input type="text" name="name" placeholder="Max 20 characters" maxlength=20>
+        <label>Enter URL</label>
+        <input type="text" name="url" placeholder="Enter the URL" maxlength=200>
+        <button>Submit</button>
+    </form>
+
+    {% if msg %}
+    <p style="color: red">{{ msg }}</p>
+    {% else %}
+    <table border="1">
+        <tr>
+            <th>Upload Link</th>
+            <th>Generated Link</th>
+        </tr>
+        <tr>
+            <td>{{ name }}</td>
+            <td><a href="http://127.0.0.1:5000/{{ short_name }}">http://127.0.0.1:5000/{{ short_name }}</a></td>
+        </tr>
+    </table>
+    {% endif %}
 </body>
 </html>
